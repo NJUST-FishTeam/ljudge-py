@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+from __future__ import print_function
+
 import subprocess
 import collections
 import json
@@ -29,6 +31,8 @@ def run(options={}, env={}):
     sp = subprocess.Popen(args, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     sp.wait()
     out, err = sp.communicate()
-    if err:
-        raise Exception(err)
+    if sp.returncode != 0:
+        cmd = subprocess.list2cmdline(args)
+        print(err)
+        raise subprocess.CalledProcessError(sp.returncode, cmd, err)
     return json.loads(out)

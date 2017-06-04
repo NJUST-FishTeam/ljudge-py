@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name='ljudge',
     packages=['ljudge'],
-    version='0.1',
+    version='0.2',
     description='python bindings for ljudge',
     author='shengrang',
     author_email='shengrang0@gmail.com',
