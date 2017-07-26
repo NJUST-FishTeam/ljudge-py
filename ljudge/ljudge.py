@@ -29,7 +29,6 @@ def run(options={}, env={}):
     args.extend(options_to_args(options))
     args.extend(options_to_args(env))
     sp = subprocess.Popen(args, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-    sp.wait()
     out, err = sp.communicate()
     if sp.returncode != 0:
         cmd = subprocess.list2cmdline(args)
